@@ -1,0 +1,38 @@
+﻿[
+  {
+    "Name": "Tower.Health",
+    "1": 1000,
+   
+    "3": 2000
+  },
+  {
+    "Name": "Tower.DamageAmount",
+    "1": 40,
+   
+    "3": 60
+  },
+  {
+    "Name": "Tower.TimeReload",
+    "1": 1.7,
+   
+    "3": 1.2
+  },
+  {
+    "Name": "Tower.LevelCost",
+    "1": 0,
+    "2": 250,
+    "3": 250
+  },
+  {
+    "Name": "Tower.CombatRange",
+    "1": 700,
+    "2": 700,
+    "3": 700
+  },
+  {
+    "Name": "Tower.K1_CombatBot",
+    "1": 1,
+    "2": 1,
+    "3": 1
+  }
+]

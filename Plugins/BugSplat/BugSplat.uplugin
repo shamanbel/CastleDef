@@ -1,0 +1,39 @@
+{
+	"FileVersion": 3,
+	"Version": "1.2",
+	"VersionName": "1.0",
+	"FriendlyName": "",
+	"Description": "BugSplat provides crash reporting for Unreal projects, and gives invaluable insight into the issues tripping up your users.",
+	"Category": "BugSplat",
+	"CreatedBy": "BugSplat",
+	"CreatedByURL": "http://bugsplat.com",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"EnabledByDefault": true,
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "BugSplat",
+			"Type": "Editor",
+			"LoadingPhase": "Default"
+		},
+		{
+			"Name": "BugSplatRuntime",
+			"Type": "Runtime",
+			"LoadingPhase": "Default",
+			"WhitelistPlatforms": [ "Win64", "Mac", "Android", "IOS", "Linux" ]
+		}
+	],
+	"PostBuildSteps":
+	{
+		"Win64": [
+			"call \"$(ProjectDir)\\Plugins\\BugSplat\\Source\\Scripts\\BugSplat.bat\" $(TargetPlatform)"
+		],
+		"Mac": [
+			"sh $(PluginDir)/Source/Scripts/setup-upload-symbols.sh $(TargetPlatform) $(TargetName) $(ProjectDir) $(PluginDir)"
+		]
+	}
+}

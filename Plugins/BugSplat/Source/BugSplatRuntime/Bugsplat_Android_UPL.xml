@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root xmlns:android="http://schemas.android.com/apk/res/android">
+    <init>
+        <log text="BugSplat SDK Android UPL initialization"/>
+
+        <setBoolFromProperty result="bEnableCrashReporting" ini="Engine" section="/Script/BugSplatRuntime.BugSplatEditorSettings" property="bEnableCrashReportingAndroid" default="false" />
+        <setBoolFromProperty result="bUploadSymbols" ini="Engine" section="/Script/BugSplatRuntime.BugSplatEditorSettings" property="bUploadDebugSymbolsAndroid" default="false" />
+    </init>
+
+    <resourceCopies>
+        <if condition="bEnableCrashReporting">
+            <true>
+                <copyDir src="$S(PluginDir)/../ThirdParty/Android/lib/$S(Architecture)" dst="$S(BuildDir)/libs/$S(Architecture)" />
+            </true>
+        </if>
+    </resourceCopies>
+
+    <buildGradleAdditions>
+        <if condition="bEnableCrashReporting">
+            <true>
+                <insert>
+                    android {
+                        packagingOptions{
+                            doNotStrip "*/armeabi/*.so"
+                            doNotStrip "*/armeabi-v7a/*.so"
+                            doNotStrip "*/x86/*.so"
+                            doNotStrip "*/x86_64/*.so"
+                        }
+                    }
+                </insert>
+            </true>
+        </if>
+    </buildGradleAdditions>
+</root>
